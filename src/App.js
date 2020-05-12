@@ -9,24 +9,24 @@ class App extends React.Component {
     this.state = {
       products: [
         {
-          price: 99,
-          title: 'Watch',
+          price: 999,
+          title: 'iphone',
           qty: 1,
-          img: 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+          img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
           id: 1
         },
         {
           price: 999,
-          title: 'Mobile Phone',
+          title: 'Watch',
           qty: 10,
-          img: 'https://images.unsplash.com/photo-1520923642038-b4259acecbd7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1306&q=80',
+          img: 'https://images.unsplash.com/photo-1565250026886-ec2964652258?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
           id: 2
         },
         {
           price: 999,
           title: 'Laptop',
           qty: 4,
-          img: 'https://images.unsplash.com/photo-1504707748692-419802cf939d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1330&q=80',
+          img: 'https://images.unsplash.com/photo-1479920252409-6e3d8e8d4866?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
           id: 3
         }
       ]
@@ -82,17 +82,6 @@ class App extends React.Component {
     return count;
   }
 
-  getCartTotal = () => {
-    const { products } = this.state;
-
-    let cartTotal = 0;
-
-    products.map((product) => {
-      cartTotal = cartTotal + product.qty * product.price
-    })
-
-    return cartTotal;
-  }
   render () {
     const { products } = this.state;
     return (
@@ -104,7 +93,6 @@ class App extends React.Component {
           onDecreaseQuantity={this.handleDecreaseQuantity}
           onDeleteProduct={this.handleDeleteProduct}
         />
-        <div style={ {padding: 10, fontSize: 20} }>TOTAL: {this.getCartTotal()} </div>
       </div>
     );
   }
