@@ -100,20 +100,35 @@ class App extends React.Component {
     if (products[index].qty === 0) {
       return;
     }
-
-    products[index].qty -= 1;
-
-    this.setState({
-      products
+    const docRef = this.db.collection('collection').doc(products[index].id);
+    docRef
+    .update({
+      qty : products[index].qty - 1
+    })
+    .then(() =>{
+      console.log("updated successfully");
+    })
+    .catch((err)=>{
+      console.log('error in updating' , err);
     })
   }
   handleDeleteProduct = (id) => {
     const { products } = this.state;
 
-    const items = products.filter((item) => item.id !== id); // [{}]
+    // const items = products.filter((item) => item.id !== id); // [{}]
 
-    this.setState({
-      products: items
+    // this.setState({
+    //   products: items
+    // })
+
+    const docRef = this.db.collection('collection').doc(id);
+    docRef
+    .delete()
+    .then(() =>{
+      console.log("Deleted successfully");
+    })
+    .catch((err)=>{
+      console.log('error in updating' , err);
     })
   }
 
